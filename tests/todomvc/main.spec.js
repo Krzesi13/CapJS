@@ -1,9 +1,10 @@
-var Homepage = require('../../page-objects/todomvc/homepage.po.js');
+import Homepage from '../../page-objects/todomvc/homepageClass.po.js';
+
 describe('todomvc tests', function() {
   var homepage = new Homepage();
   homepage.get();
   it('shouldMatchTitle', function() {
-    expect(homepage.title.getText()).toEqual('todos');
+    expect(homepage.getTitle().getText()).toEqual('todos');
   });
 
 });

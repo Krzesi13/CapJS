@@ -1,8 +1,9 @@
-var homepage = function() {
-  this.title = element(by.css('h1'));
-
-  this.get = function() {
+class Homepage {
+  get() {
     browser.get('http://todomvc.com/examples/angularjs/');
   }
+  getTitle() {
+    return element(by.css('h1'));
+  }
 }
-module.exports = homepage;
+export default Homepage;
