@@ -5,9 +5,21 @@ describe('todomvc tests', function() {
   let logger = log4js.getLogger();
   var homepage = new Homepage();
   homepage.get();
-  logger.info('test log info');
+
   it('shouldMatchTitle', function() {
+    logger.info('Checking title');
     expect(homepage.getTitle().getText()).toEqual('todos');
   });
+
+  it('shouldAddNewTodos', function() {
+    homepage.addTodo('test1');
+    homepage.addTodo('test2');
+    homepage.addTodo('test3');
+    logger.info('Adding new todo');
+    expect(homepage.getNumberOfTodos()).toEqual(3);
+  })
+
+  s
+
 
 });
