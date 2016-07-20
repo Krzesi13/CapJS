@@ -1,4 +1,11 @@
+import log4js from 'log4js';
+
+
 class Homepage {
+  constructor() {
+    this.logger = log4js.getLogger();
+  }
+
   //elements
   get() {
     browser.get('http://todomvc.com/examples/angularjs/');
@@ -12,6 +19,9 @@ class Homepage {
   getAddTodoInput() {
     return element(by.model('newTodo'));
   }
+  getTodos() {
+    return element.all(by.repeater('todo in todos'));
+  }
 
 
   //actions
@@ -22,6 +32,18 @@ class Homepage {
   getNumberOfTodos() {
     return element.all(by.repeater('todo in todos')).count();
   }
+  removeFirstTodo() {
+    var todo = element.all(by.repeater('todo in todos')).first().element(by.css('.view'));
+    browser.actions().mouseMove(todo).perform();
+    todo.element(by.css('.destroy')).click();
+  }
+  removeAllTodos() {
+    var n = this.getNumberOfTodos();
+    // this.logger.info(`number of todos: ${n}`);
+    this.removeFirstTodo();
+    this.removeFirstTodo();
+    this.removeFirstTodo();
 
+  }
 }
 export default Homepage;

@@ -4,7 +4,10 @@ import log4js from 'log4js';
 describe('todomvc tests', function() {
   let logger = log4js.getLogger();
   var homepage = new Homepage();
-  homepage.get();
+
+  beforeEach(function() {
+    homepage.get();
+  })
 
   it('shouldMatchTitle', function() {
     logger.info('Checking title');
@@ -15,11 +18,14 @@ describe('todomvc tests', function() {
     homepage.addTodo('test1');
     homepage.addTodo('test2');
     homepage.addTodo('test3');
-    logger.info('Adding new todo');
+    logger.info('Adding new todos');
     expect(homepage.getNumberOfTodos()).toEqual(3);
+    homepage.removeAllTodos();
   })
 
-  s
+  it('shouldNotContainTodosAtStart', function() {
+    expect(homepage.getNumberOfTodos()).toEqual(0);
+  })
 
 
 });
