@@ -1,27 +1,17 @@
-class Homepage {
+class HomepageBootstrap {
   //elements
   get() {
-    browser.get('http://todomvc.com/examples/angularjs/');
+    browser.get('https://angular-ui.github.io/bootstrap/');
   }
-  getTitle() {
-    return element(by.css('h1'));
+  getNewTab(){
+    return element(by.css('#accordion > div.row.code > div > div.pull-right > button'));
   }
-  getTodoForm() {
-    return element(by.id('todo-form'));
+  getTitle(){
+    return element(by.css('#overview > div:nth-child(1) > h1'));
   }
-  getAddTodoInput() {
-    return element(by.model('newTodo'));
-  }
-
-
-  //actions
-  addTodo(name) {
-    this.getAddTodoInput().sendKeys(name);
-    this.getTodoForm().submit();
-  }
-  getNumberOfTodos() {
-    return element.all(by.repeater('todo in todos')).count();
+  getTitle2(){
+    return element(by.css('body > nav > div > div > a > span'));
   }
 
 }
-export default Homepage;
+export default HomepageBootstrap;
