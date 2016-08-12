@@ -9,7 +9,7 @@ class HandlesActions {
   };
 
   switchToHandles(index){
-    browser.wait(this.windowCount(2), 10000);
+    browser.wait(this.windowCount(index+1), 10000);
     browser.getAllWindowHandles().then(function(handles){
       browser.switchTo().window(handles[index]);
     });

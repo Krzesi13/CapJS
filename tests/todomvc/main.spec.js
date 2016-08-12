@@ -8,13 +8,17 @@ describe('todo tests', function() {
   var homepagebootstrap = new HomepageBootstrap();
   var browseractions = new BrowserActions();
   var handlesactions = new HandlesActions();
-  homepagebootstrap.get();
+
+  beforeEach(function() {
+    homepagebootstrap.get();
+  })
 
   it('shouldNewTab', function() {
-    var but = homepagebootstrap.getNewTab();
-    browseractions.waitandScrolltoElement(but);
+    var btn = homepagebootstrap.getNewTab();
+    browseractions.waitAndScrolltoElement(btn);
     logger.info('Scroll to button');
-    browseractions.waitForPresentAndVisible(but);
+    browseractions.waitForPresentAndVisible(btn);
+    btn.click();
     logger.info('Click on button');
     handlesactions.switchToHandles(1);
     expect((homepagebootstrap.getTitle2()).getText()).toContain('Plunker');

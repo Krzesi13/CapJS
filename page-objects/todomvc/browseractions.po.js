@@ -1,15 +1,32 @@
 class BrowserActions {
 
-  waitandScrolltoElement(el) {
-     browser.wait(
-      browser.executeScript(function(el) { el.scrollIntoView(); }, el.getWebElement()), 10000);
-  }
+	waitForPresentAndVisible(el){
+		browser.wait(function () { return el.isPresent();},10000);
+		browser.wait(function () { return el.isDisplayed();},10000);
+	};
 
-  waitForPresentAndVisible(el){
-    browser.wait(function () { return el.isPresent();},10000);
-    browser.wait(function () { return el.isDisplayed();},10000);
-    //browser.actions().mouseMove(el).click();
-  }
+	waitAndScrolltoElement(el) {
+		browser.executeScript(
+			function(el) { el.scrollIntoView(false);}, 
+			el.getWebElement()
+		);
+	};
+
+	customMatchers(){
+		return {
+		toBeLoaded: function () {
+			return
+			compare: function(actual){
+				var result {}
+				result.pass= actual.isLoaded()…
+				if result.pass ==true
+				result.message=’aasfaf’
+				else..
+				}
+			}
+		}
+	};
+
 
 }
 export default BrowserActions;
