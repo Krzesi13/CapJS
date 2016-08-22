@@ -7,21 +7,21 @@ class BrowserActions {
 
 	waitAndScrolltoElement(el) {
 		browser.executeScript(
-			function(el) { el.scrollIntoView(false);}, 
-			el.getWebElement()
+			function(el) { el.scrollIntoView(false);}, el.getWebElement()
 		);
 	};
 
 	customMatchers(){
 		return {
 		toBeLoaded: function () {
-			return
-			compare: function(actual){
-				var result {}
-				result.pass= actual.isLoaded()…
-				if result.pass ==true
-				result.message=’aasfaf’
-				else..
+			return {
+				compare: function(actual){
+					var result = {};
+					//result.pass= actual.isLoaded()…
+					//if result.pass ==true
+					//result.message=’aasfaf’
+					//else..
+					}
 				}
 			}
 		}
